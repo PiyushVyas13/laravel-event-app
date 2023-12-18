@@ -14,6 +14,7 @@
         <!-- Scripts -->
         @notifyJs
         @notifyCss
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
@@ -36,6 +37,6 @@
             </main>
         </div>
         <x-notify::notify />
-
+{{--        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>--}}
     </body>
 </html>

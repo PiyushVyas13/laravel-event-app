@@ -84,23 +84,14 @@
                 $end_time = date("g:i A", strtotime($event->end_time));
                 $date = date("d/m/Y", strtotime($event->date));
                 @endphp
-                <div  class="scale-100 p-4 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none motion-safe:hover:scale-[1.01] transition-all duration-250 ">
-                    <a href="{{route('events.show', ['event'=>$event->id])}}" class="focus:outline focus:outline-2 focus:outline-red-500">
-
-                        <div class="flex justify-between">
-                            <!-- Event Name -->
-                            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">{{$event->name}}</h2>
-                        </div>
-
-
-                        <!-- Date -->
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mt-2 pt-2">Date: <span class="font-semibold">{{$date}}</span></p>
-
-                        <!-- Start and End Time -->
-                        <p class="text-gray-500 dark:text-gray-400 text-sm pt-3">Time: <span class="font-semibold">{{$start_time}} - {{$end_time}}</span></p>
-                    </a>
-                </div>
-
+                <x-event-card
+                    :id="$event->id"
+                    :title="$event->name"
+                    :date="$date"
+                    :start_time="$start_time"
+                    :end_time="$end_time"
+                    :creator="$event->user->name"
+                />
                 @endforeach
             <!-- Repeat this block for each event -->
         </div>
