@@ -96,4 +96,8 @@ Route::get('/events/{event}/participants/search', function(Request $request, Eve
 
 })->name('event.participants.search');
 
+Route::resource('events.announcements', \App\Http\Controllers\AnnouncementController::class)
+    ->only(['index', 'store', 'update', 'destroy'])
+    ->middleware(['auth', 'verified']);
+
 require __DIR__.'/auth.php';
