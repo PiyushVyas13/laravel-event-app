@@ -32,7 +32,6 @@ class AnnouncementController extends Controller
         $validated = $request->validate([
             'title'=> 'required|string|max:255',
             'content' => 'required',
-            'user_id' => 'required|numeric',
         ]);
 
         $event->announcements()->create($validated);
@@ -59,24 +58,25 @@ class AnnouncementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update(Request $request, Event $event, Announcement $announcement)
     {
         $validated = $request->validate([
             'title'=> 'required|string|max:255',
             'content' => 'required',
-            'user_id' => 'required|numeric',
         ]);
 
         $announcement->update($validated);
-        notify()->success('Announcement created');
-        return redirect(route('events.announcements.index', $announcement->event->id));
+        notify()->success('Announcement updated');
+        return redirect(route('events.announcements.index', $event));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Announcement $announcement)
+    public function destroy(Event $event, Announcement $announcement)
     {
-        //
+        $announcement->delete();
+        notify()->success('Announcement deleted');
+        return redirect(route('events.announcements.index', $event));
     }
 }

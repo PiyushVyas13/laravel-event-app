@@ -34,7 +34,12 @@ Route::get('/nisha', function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    $today = now()->toDateString(); // Get today's date in 'Y-m-d' format
+    $tenDaysLater = now()->addDays(10)->toDateString(); // Get date 10 days from now
+
+    $eventsInRange = Event::whereBetween('date', [$today, $tenDaysLater])->get();
+    dd($today);
+    return view('welcome', ['events'=>$eventsInRange]);
 });
 Route::get('/aboutus',function(){
     return view('aboutus');
