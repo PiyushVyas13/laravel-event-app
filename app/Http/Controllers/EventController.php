@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,11 +15,10 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): View
+    public function index(): View
     {
-        $user = $request->user();
         return view('events.index', [
-            'events' => $user->events()->paginate(10)
+            'events' => Event::with('user')->orderBy('date', 'desc')->paginate(10),
         ]);
     }
 
