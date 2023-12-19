@@ -27,7 +27,7 @@
         </ul>
     </nav>
     <main>
-        <div  class="main bg-zinc-300 dark:bg-zinc-500 py-20 bg-gradient-to-t flex">
+        <div  class="main bg-zinc-300 dark:bg-zinc-500 py-20 flex">
             <div>
             <div class="text-7xl pl-8 mxfont-extrabold text-white dark:text-black font-serif">EVENT VISTA</div>
             <p class="w-70 text-left mx-61 items-center px-5 py-5 text-sm tracking-tighter text-white dark:text-black">Welcome to EventVista, where we transform ordinary moments into extraordinary memories. As a premier event management company, we specialize in curating and orchestrating seamless <br>experiences that leave a lasting impression. At EventVista, we believe that every event is a unique story waiting to be told, and we are dedicated to bringing your vision to life with precision,<br> creativity, and unparalleled attention to detail.</p>
