@@ -18,6 +18,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/bassi', function () {
+    return view('bassi');
+})->name('bassi');
+Route::get('/trap', function () {
+    return view('trap');
+});
+Route::get('/darshan', function () {
+    return view('darshan');
+});
+
+Route::get('/nisha', function () {
+    return view('nisha');
+});
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/aboutus',function(){
+    return view('aboutus');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
