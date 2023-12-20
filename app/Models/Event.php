@@ -17,7 +17,9 @@ class Event extends Model
         'name',
         'date',
         'start_time',
-        'end_time'
+        'end_time',
+        'location',
+        'description',
     ];
 
     public function user(): BelongsTo {

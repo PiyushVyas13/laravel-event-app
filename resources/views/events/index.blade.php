@@ -66,6 +66,26 @@
                     <x-input-error :messages="$errors->get('end_time')" class="mt-2" />
                 </div>
 
+                <div>
+                    <x-input-label for="ev_location" value="{{ __('Location') }}" class="mt-2 mb-2.5"/>
+                    <x-text-input
+                        id="ev_location"
+                        name="location"
+                        type="text"
+                        class="block w-full dark:[color-scheme:dark]"
+                        placeholder="{{ __('Location') }}"
+                    />
+                    <x-input-error :messages="$errors->get('location')" class="mt-2" />
+                </div>
+
+                <div>
+                    <x-input-label for="ev_desc" value="{{ __('Description') }}" class="mt-2 mb-2.5"/>
+                    <textarea id="message" name="description" rows="4" class="w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Announce something...">
+
+                    </textarea>
+                    <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                </div>
+
                 <div class="mt-6 flex">
                     <x-primary-button>
                         {{__('Create')}}
@@ -90,6 +110,8 @@
                     :date="$date"
                     :start_time="$start_time"
                     :end_time="$end_time"
+                    :location="$event->location"
+                    :description="$event->description"
                     :creator="$event->user->name"
                 />
                 @endforeach

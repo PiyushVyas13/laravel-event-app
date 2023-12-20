@@ -5,6 +5,7 @@
     'start_time',
     'end_time',
     'creator',
+    'location',
 ])
 
 <div  class="scale-100 p-4 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none motion-safe:hover:scale-[1.01] transition-all duration-250 ">
@@ -26,6 +27,11 @@
         <p class="flex items-center gap-x-2 text-gray-500 dark:text-gray-400 text-sm pt-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <span class="font-semibold">{{$start_time}} - {{$end_time}}</span>
+        </p>
+
+        <p class="flex items-center gap-x-2 text-gray-500 dark:text-gray-400 text-sm pt-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="font-semibold">{{$location}}</span>
         </p>
 
         <p class="text-gray-500 dark:text-gray-400 text-sm pt-4">By <span class="font-semibold">{{$creator}}</span></p>

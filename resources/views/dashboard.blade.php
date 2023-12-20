@@ -21,6 +21,7 @@
                     :start_time="$start_time"
                     :end_time="$end_time"
                     :creator="$event->user->name"
+                    :location="$event->location"
                 />
             @endforeach
             <!-- Repeat this block for each event -->

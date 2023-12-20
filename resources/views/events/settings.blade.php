@@ -39,6 +39,27 @@
                             </div>
 
                             <div>
+                                <x-input-label for="ev_location" value="{{ __('Location') }}" class="mt-2 mb-2.5"/>
+                                <x-text-input
+                                    id="ev_location"
+                                    name="location"
+                                    type="text"
+                                    class="block w-full dark:[color-scheme:dark]"
+                                    placeholder="{{ __('Location') }}"
+                                    :value="old('location', $event->location)"
+                                />
+                                <x-input-error :messages="$errors->get('location')" class="mt-2" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="ev_desc" value="{{ __('Description') }}" class="mt-2 mb-2.5"/>
+                                <textarea id="message" name="description" rows="4" class="w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Announce something...">
+                                    {{old('description', $event->description)}}
+                                </textarea>
+                                <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                            </div>
+
+                            <div>
                                 <x-input-label for="ev_time" value="{{ __('Time') }}" class="mt-0.5 mb-2.5"/>
                                 <div class="flex justify-between items-center gap-2 mt-1">
                                     <x-text-input
@@ -288,13 +309,18 @@
                                             </div>
                                         </td>
                                         <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{$participant->name}}
+                                        `+
+                                        participant.name+
+                                        `
                                         </th>
                                         <td class="px-3 py-4">
-                                            {{$participant->email}}
+                                        `+
+                                            participant.email
+                                        +
+                                        `
                                         </td>
                                         <td class="px-3 py-4 pl-6">
-                                        <button type="button" @click.prevent="$dispatch('open-modal', 'participant-removal')" class="font-medium text-blue-600 dark:text-rose-500 hover:underline par_remove" data-id="{{$participant->id}}">
+                                        <button type="button" @click.prevent="$dispatch('open-modal', 'participant-removal')" class="font-medium text-blue-600 dark:text-rose-500 hover:underline par_remove" data-id="`+participant.id+`">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                                             </button>
                                         </td>

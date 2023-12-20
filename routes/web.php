@@ -15,38 +15,16 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
-|
+
 */
-
-Route::get('/bassi', function () {
-    return view('bassi');
-})->name('bassi');
-Route::get('/trap', function () {
-    return view('trap');
-});
-Route::get('/darshan', function () {
-    return view('darshan');
-});
-
-Route::get('/nisha', function () {
-    return view('nisha');
-});
-
 
 Route::get('/', function () {
     $today = now()->toDateString(); // Get today's date in 'Y-m-d' format
     $tenDaysLater = now()->addDays(10)->toDateString(); // Get date 10 days from now
 
     $eventsInRange = Event::whereBetween('date', [$today, $tenDaysLater])->get();
-    dd($today);
-    return view('welcome', ['events'=>$eventsInRange]);
-});
-Route::get('/aboutus',function(){
-    return view('aboutus');
-});
 
-Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['events' => $eventsInRange]);
 });
 
 Route::get('/dashboard', function (\Illuminate\Http\Request $request) {

@@ -15,10 +15,12 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
         return view('events.index', [
-            'events' => Event::with('user')->orderBy('date', 'desc')->paginate(10),
+            'events' => Event::with('user')->orderBy('date', 'desc')
+                ->where('user_id', '=', $request->user()->id)
+                    ->paginate(10),
         ]);
     }
 
@@ -40,7 +42,9 @@ class EventController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'date' => ['required', 'date', 'after:today'],
             'start_time' => ['required', 'date_format:H:i'],
-            'end_time' => ['required', 'date_format:H:i', 'after:start_time']
+            'end_time' => ['required', 'date_format:H:i', 'after:start_time'],
+            'location' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string']
 
         ]);
 
@@ -92,7 +96,9 @@ class EventController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'date' => ['required', 'date', 'after:today'],
             'start_time' => ['required', 'date_format:H:i'],
-            'end_time' => ['required', 'date_format:H:i', 'after:start_time']
+            'end_time' => ['required', 'date_format:H:i', 'after:start_time'],
+            'location' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string']
         ]);
 
         $event->update($validated);
